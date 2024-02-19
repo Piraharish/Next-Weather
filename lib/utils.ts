@@ -1,9 +1,9 @@
-import { type ClassValue, clsx } from "clsx"
+import { type ClassValue, clsx } from "clsx";
 import { Metadata } from "next";
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export function constructMetadata({
@@ -39,7 +39,7 @@ export function constructMetadata({
       creator: "@piraharish",
     },
     icons,
-    metadataBase: new URL("https://pdfied-piraharishs-projects.vercel.app"),
+    metadataBase: new URL("https://forecastify-weather.vercel.app/"),
     ...(noIndex && {
       robots: {
         index: false,
