@@ -1,23 +1,18 @@
-export interface WeatherData {
-  name: string;
-  region: string;
-  country: string;
-  icon: string;
-  conditionText: string;
-  tempC: number;
-  tempF: number;
-  windKph: number;
-  windDir: string;
-  pressureMb: number;
-  humidity: number;
-}
+"use server";
 
-export const fetchWeatherData = async (query: string | number): Promise<WeatherData> => {
+import { WeatherData } from "@/lib/interface";
+import { SearchSchema } from "@/lib/schema";
+
+export const fetchWeatherData = async (query: string): Promise<WeatherData> => {
   const baseUrl = process.env.NEXT_PUBLIC_WEATHER_BASE_URL;
-  const apiUrl = `${baseUrl}${query}`;
 
   try {
-    const response = await fetch(apiUrl);
+    const validatedField = SearchSchema.parse({ location: query });
+
+    const response = await fetch(
+      `${baseUrl}${validatedField.location}`
+    );
+
     if (!response.ok) {
       throw new Error("Failed to fetch weather data");
     }
@@ -37,6 +32,6 @@ export const fetchWeatherData = async (query: string | number): Promise<WeatherD
       humidity: current.humidity,
     };
   } catch (error) {
-    throw new Error("Failed to fetch weather data");
+    throw new Error("Enter a valid location or try again later");
   }
 };
