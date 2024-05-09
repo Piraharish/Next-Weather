@@ -40,7 +40,7 @@ const HeroCard = () => {
           form.reset();
         })
         .catch((error) => {
-          form.setError("location", { message: error });
+          form.setError("location", { message: "Failed to fetch weather data" });
         });
     });
   };

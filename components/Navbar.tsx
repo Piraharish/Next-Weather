@@ -32,7 +32,6 @@ const Navbar = () => {
             duration: 0.3,
             ease: "easeInOut",
           }}
-          className=""
         >
           <Logo />
         </MotionDiv>

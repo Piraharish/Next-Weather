@@ -28,7 +28,17 @@ const ContentCard: React.FC<WeatherData> = ({
 }) => {
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between p-4 border rounded-md">
+      <MotionDiv
+        initial={{ opacity: 0, y: -5 }}
+        animate={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{
+          duration: 0.3,
+          ease: "easeInOut",
+          delay: 0.3,
+        }}
+        className="flex items-center justify-between p-4 border rounded-md"
+      >
         <div className="space-y-1 w-full">
           <WeatherAttribute label="City" value={name} />
           <WeatherAttribute label="Region" value={region} />
@@ -48,19 +58,15 @@ const ContentCard: React.FC<WeatherData> = ({
             />
           </Suspense>
         )}
-      </div>
+      </MotionDiv>
 
       <MotionDiv
-        initial="hidden"
-        whileInView="visible"
-        variants={{
-          visible: { opacity: 1 },
-          hidden: { opacity: 0 },
-        }}
+        initial={{ opacity: 0, y: -5 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
           duration: 0.3,
           ease: "easeInOut",
-          delay: 1,
+          delay: 0.6,
         }}
         className="grid grid-cols-1 sm:grid-cols-2 gap-4"
       >
