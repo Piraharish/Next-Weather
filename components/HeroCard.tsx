@@ -20,7 +20,6 @@ import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { LuLoader, LuSearch } from "react-icons/lu";
 import * as z from "zod";
-import Barcode from "./Barcode";
 
 const HeroCard = () => {
   const [isPending, startTransition] = useTransition();
@@ -103,7 +102,6 @@ const HeroCard = () => {
           humidity={weatherData.humidity}
         />
       )}
-      <Barcode />
     </div>
   );
 };
