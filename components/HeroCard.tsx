@@ -20,6 +20,7 @@ import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { LuLoader, LuSearch } from "react-icons/lu";
 import * as z from "zod";
+import Barcode from "./Barcode";
 
 const HeroCard = () => {
   const [isPending, startTransition] = useTransition();
@@ -40,7 +41,9 @@ const HeroCard = () => {
           form.reset();
         })
         .catch((error) => {
-          form.setError("location", { message: "Failed to fetch weather data" });
+          form.setError("location", {
+            message: "Failed to fetch weather data",
+          });
         });
     });
   };
@@ -100,6 +103,7 @@ const HeroCard = () => {
           humidity={weatherData.humidity}
         />
       )}
+      <Barcode />
     </div>
   );
 };
